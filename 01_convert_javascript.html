@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript</title>
+  </head>
+  <body>
+    <p id="app"></p>
+    <input id="textArea" type="text" />
+    <p id="textHere"></p>
+    <script>
+      const textArea = document.querySelector("#textArea");
+      const app = {
+        name: "jihwan",
+        inputText: "",
+      };
+
+      textArea.addEventListener("input", (event) => {
+        document.querySelector("#textHere").innerHTML = textArea.value;
+        app.inputText = textArea.value;
+      });
+
+      document.querySelector("#app").innerHTML = app.name;
+    </script>
+  </body>
+</html>
