@@ -1,6 +1,6 @@
 # Vue JS
 
-## 핵심
+## I. 핵심
 
 ### 1. SPA
 
@@ -28,3 +28,14 @@ Model-ViewModel-View : Model이 바뀌면 View가 자동으로 바뀜
   - Vanilla Javascript DOM 조작 (버튼 생성 => 이벤트 리스너 => 이벤트 핸들링)
 - 선언형 : 변화를 선언(그림 그리기)
   - 프레임워크를 통한 조작
+
+## II. Vue JS의 요소
+
+### 1. Directive(지시자)
+
+- `v-for`: 배열과 같은 데이터를 순회
+- `v-if` : 조건부 랜더링 (조건이 참일 때)
+- `v-else` : 조건부 랜더링
+- `v-on`: `이벤트` = `함수` : 이벤트 바인딩 (`addEventListener()`)
+- `v-model` : 양방향 데이터 바인딩 (data - tag 안 data)
+- `v-bind`:`class`={`classname`:`boolean`} : 태그랑 바인드
