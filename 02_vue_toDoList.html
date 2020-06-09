@@ -13,6 +13,11 @@
   <body>
     <div id="app">
       <h1>Todo List</h1>
+      <select v-model="status">
+        <option value="showAll">모두보기</option>
+        <option value="showCompleted">완료된 것만 보기</option>
+        <option value="showIncompleted">미완료된 것만 보기</option>
+      </select>
       <input
         v-on:keypress.enter="createTodo"
         v-model="newInput"
@@ -21,18 +26,32 @@
       />
       <button v-on:click="createTodo">추가</button>
       <ul>
-        <li v-bind:class="{completed:todo.isCompleted}" v-for="todo in todos">
+        <li
+          v-bind:class="{completed:todo.isCompleted}"
+          v-for="todo in todosByStatus"
+        >
           <input v-model="todo.isCompleted" type="checkbox" />
           {{todo.content}}
         </li>
       </ul>
+      <button v-on:click="deleteTodo">
+        완료된 할 일 지우기
+      </button>
+      <h1>Computed vs Method 비교</h1>
+      <div v-if="visible">
+        <p>computed : {{computedDate}}</p>
+        <p>method : {{methodDate()}}</p>
+      </div>
+      <button v-on:click="visible = !visible">reload</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-      new Vue({
+      const app = new Vue({
         el: "#app",
         data: {
+          visible: true,
           name: "jihwan",
+          status: "showAll", //showCompleted, showIncompleted
           newInput: "",
           todos: [
             { content: "Vue JS 복습", isCompleted: false },
@@ -41,10 +60,38 @@
             { content: "아하", isCompleted: false },
           ],
         },
+        computed: {
+          // caching
+          computedDate() {
+            return new Date();
+          },
+          todosByStatus() {
+            // status = "showCompleted"
+            if (this.status === "showCompleted") {
+              return this.todos.filter((todo) => todo.isCompleted);
+            }
+            // status = "showIncompleted"
+            if (this.status === "showIncompleted") {
+              return this.todos.filter((todo) => !todo.isCompleted);
+            }
+            // status = "showAll"
+            return this.todos;
+          },
+        },
         methods: {
+          methodDate() {
+            return new Date();
+          },
           createTodo() {
-            this.todos.push({ content: this.newInput, isCompleted: false });
-            this.newInput = "";
+            if (this.newInput) {
+              this.todos.push({ content: this.newInput, isCompleted: false });
+              this.newInput = "";
+            } else {
+              alert("빈 값은 안됩니다.");
+            }
+          },
+          deleteTodo() {
+            this.todos = this.todos.filter((todo) => !todo.isCompleted);
           },
         },
       });

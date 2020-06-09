@@ -39,3 +39,7 @@ Model-ViewModel-View : Model이 바뀌면 View가 자동으로 바뀜
 - `v-on`: `이벤트` = `함수` : 이벤트 바인딩 (`addEventListener()`)
 - `v-model` : 양방향 데이터 바인딩 (data - tag 안 data)
 - `v-bind`:`class`={`classname`:`boolean`} : 태그랑 바인드
+
+### 2. Computed
+
+- caching 가능
