@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <div id="app">
+      <h1>텍스트가 이미지로 띠용띠용!!!</h1>
+      input: <input type="text" v-model="inputText" v-on:input="showImage()" />
+      <br />
+      output :
+      <br />
+      <div v-html="image"></div>
+    </div>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jdenticon@2.2.0" async></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          inputText: "",
+          image: "",
+        },
+        methods: {
+          showImage() {
+            this.image = jdenticon.toSvg(this.inputText, 200);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
