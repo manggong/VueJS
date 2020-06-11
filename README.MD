@@ -39,7 +39,13 @@ Model-ViewModel-View : Model이 바뀌면 View가 자동으로 바뀜
 - `v-on`: `이벤트` = `함수` : 이벤트 바인딩 (`addEventListener()`)
 - `v-model` : 양방향 데이터 바인딩 (data - tag 안 data)
 - `v-bind`:`class`={`classname`:`boolean`} : 태그랑 바인드
+- `v-text`: 데이터 렌더(innerText) == {{ }}
+- `v-html`: 데이터 렌더(innnerHTML)
 
-### 2. Computed
+### 2. Vue Instance(객체)
 
-- caching 가능
+- `new Vue({})`
+- `el: '#app'`: 마운트 포인트
+- `data: {}`: 관리할 데이터
+- `methods: {}`: 함수
+- `computed: {}`: 함수화된 데이터
